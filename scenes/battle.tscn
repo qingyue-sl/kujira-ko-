@@ -1,0 +1,319 @@
+[gd_scene format=3 uid="uid://ctx8gugf2v86y"]
+
+[ext_resource type="Script" uid="uid://cc6cctc0oruua" path="res://scripts/Battle.cs" id="1_battle"]
+[ext_resource type="PackedScene" uid="uid://hn8q4cvdtmul" path="res://scenes/ui/card.tscn" id="2_th188"]
+
+[sub_resource type="StyleBoxFlat" id="StylePlayer"]
+bg_color = Color(0.055, 0.09, 0.16, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.18, 0.62, 0.88, 0.85)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgoel"]
+bg_color = Color(0.18, 0.055, 0.075, 0.97)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.9, 0.28, 0.32, 0.9)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleEndTurn"]
+bg_color = Color(0.85, 0.28, 0.16, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleEndTurnHover"]
+bg_color = Color(1, 0.42, 0.22, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[node name="Battle" type="Control" unique_id=411400192]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_battle")
+CardScene = ExtResource("2_th188")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1636736360]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.025, 0.04, 0.085, 1)
+
+[node name="PlayerArea" type="HBoxContainer" parent="." unique_id=1677313883]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 28.0
+offset_right = 445.0
+offset_bottom = 92.0
+theme_override_constants/separation = 14
+
+[node name="HP_Label" type="Label" parent="PlayerArea" unique_id=502728490]
+custom_minimum_size = Vector2(195, 64)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 1, 0.65, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StylePlayer")
+text = "生命 50 / 50 "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Energy_Label" type="Label" parent="PlayerArea" unique_id=13407973]
+custom_minimum_size = Vector2(195, 64)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.44, 0.78, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StylePlayer")
+text = "能量 3 / 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemyArea" type="HBoxContainer" parent="." unique_id=747151955]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -102.5
+offset_right = 140.0
+offset_bottom = 102.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 40
+
+[node name="EnemyPanel" type="Panel" parent="EnemyArea" unique_id=1622203865]
+custom_minimum_size = Vector2(280, 205)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mgoel")
+
+[node name="Hp_Label" type="Label" parent="EnemyArea/EnemyPanel" unique_id=1016389530]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_right = 35.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.6361667, 0.41000003, 1)
+theme_override_font_sizes/font_size = 24
+text = "20/20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemyName" type="Label" parent="EnemyArea/EnemyPanel" unique_id=860776127]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -40.0
+offset_right = 58.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.78, 1)
+theme_override_font_sizes/font_size = 29
+text = "迷雾猎犬"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Intent_Label" type="Label" parent="EnemyArea/EnemyPanel" unique_id=1502712247]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -31.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.73, 0.36, 1)
+theme_override_font_sizes/font_size = 22
+text = "意图：攻击 6"
+horizontal_alignment = 1
+
+[node name="EnemyPanel2" type="Panel" parent="EnemyArea" unique_id=774002730]
+custom_minimum_size = Vector2(280, 205)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mgoel")
+
+[node name="Hp_Label" type="Label" parent="EnemyArea/EnemyPanel2" unique_id=633551005]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_right = 35.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.6361667, 0.41000003, 1)
+theme_override_font_sizes/font_size = 24
+text = "20/20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemyName" type="Label" parent="EnemyArea/EnemyPanel2" unique_id=452738552]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -40.0
+offset_right = 58.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.78, 1)
+theme_override_font_sizes/font_size = 29
+text = "迷雾猎犬"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Intent_Label" type="Label" parent="EnemyArea/EnemyPanel2" unique_id=1880633867]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -31.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.73, 0.36, 1)
+theme_override_font_sizes/font_size = 22
+text = "意图：攻击 6"
+horizontal_alignment = 1
+
+[node name="EnemyPanel3" type="Panel" parent="EnemyArea" unique_id=1834553996]
+custom_minimum_size = Vector2(280, 205)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mgoel")
+
+[node name="Hp_Label" type="Label" parent="EnemyArea/EnemyPanel3" unique_id=1633561046]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_right = 35.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.6361667, 0.41000003, 1)
+theme_override_font_sizes/font_size = 24
+text = "20/20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemyName" type="Label" parent="EnemyArea/EnemyPanel3" unique_id=234587527]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -40.0
+offset_right = 58.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.78, 1)
+theme_override_font_sizes/font_size = 29
+text = "迷雾猎犬"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Intent_Label" type="Label" parent="EnemyArea/EnemyPanel3" unique_id=1006812195]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -31.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.73, 0.36, 1)
+theme_override_font_sizes/font_size = 22
+text = "意图：攻击 6"
+horizontal_alignment = 1
+
+[node name="HandArea" type="HBoxContainer" parent="." unique_id=163587281]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -210.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="EndTurnButton" type="Button" parent="." unique_id=2009784468]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -106.0
+offset_right = -32.0
+offset_bottom = -34.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.95, 0.88, 1)
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = SubResource("StyleEndTurn")
+theme_override_styles/hover = SubResource("StyleEndTurnHover")
+text = "结束回合"
